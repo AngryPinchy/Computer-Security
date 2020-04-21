@@ -1,0 +1,14 @@
+Description of memhack functionality:
+In memhack, I use a for loop to go over the whole guess array, and in each single loop, first I set the pw_to_guess, which means the buffer for "correct guess so far" + "the char I will guess in this round". And then I will use another for loop to go over ASCII 33 to ASCII 126, inside the loop, I will fill the buffer with the password I got so far, and then I will make the last byte in front of protected area as the char I will guess this round, and then I will use a helper function to check if this guess char is correct because if it is correct the function will handle a segment fault, then if is correct I will update my guess and go to next round, otherwise I will try another ASCII. 
+
+References used:
+Piazza posts.
+Hints in write-up.
+
+Description of timehack functionality:
+In timehack, I use a do while to make sure the output is correct, otherwise I will run another loop to make a new guess. Inside the do while, I use a for loop to go over the whole guess, and then use a for loop to check each char between ASCII 33 to ASCII 126. Durint the process, I will calculate the time difference before call check_pass and after call check_pass, and I calculate it 100 times and save the time difference into a big array. Then I will use qsort to get the median as the final time difference what I want. And I will compare the median to decide which char is the correct char. Then I will update the guess and run the hack_system. If the output is wrong I will reset the guess and make it guess again.
+
+Reference used:
+Piazza posts.
+Hints in write-up.
+A website about how to get median in C: https://stackoverflow.com/questions/1961173/median-function-in-c-math-library/7477879
